@@ -268,3 +268,134 @@ The SCHG variable contains data on school grade level for those attending school
 |6 |College undergraduate|
 |7|Graduate or professional school|
   
+# Workplace Assignments
+Synthetic persons who are in the age range for the U.S. workforce are assigned to workplaces based on commuting patterns, workplace sizes and locations.
+
+No attempt was made to match the synthetic persons to workplaces based on occupation or industry. Synthetic persons are assigned to workplaces solely based on commuting patterns and business size (number of employees), not on occupation or industry.
+
+Data sources used in the workplace assignment process include:
+- Census Transportation Planning Products (CTPP) data, Worker Home-to-Work Flow Tables. Table: B302101 – Age of Worker. This table shows the commuting patterns of residents, 16 years and older, between census tracts as reported for the 2006-2010 American Community Survey. This data can be subdivided into age groups but this analysis did not require that.
+- Business location shapefile from ESRI’s Business Analyst (2013 data update). This data is a nationwide dataset of businesses and includes business location and the number of workers per business.
+- 2010 TIGER Census Tract boundaries.
+- pums_p table used in the 2010 US Synthetic Population generation derived from 2007-2011 PUMA data. This data includes person specific information and provides this analysis with the employment status of individuals.
+- 2010 Persons table derived from the 2010 Synthetic Population. This data provides a unique ID for each person along with the household ID, block group ID, age, sex, race and whether the person is the head of household.
+- 2010 Households table from the 2010 US Synthetic Population. This data provides a household ID, block group ID and the number of persons in the household.
+
+Table B302101 of the CTPP data includes records with counts of people 16 years and over commuting from their tract of residence to their tract of work. These commuting counts were used to generate a probability of any one worker commuting from a tract of residence to a tract of business. The probability information was calculated using the following formula:
+
+Probability = (# of persons traveling to target census tract for work)/(Total number of residents in original census tract)
+
+Table 14 provides an example of data from table B302101 including the calculated probability of commuting between two census tracts.
+
+**Table 14. Example of worker to workplace flows with probability values derived from Table B302101 of the CTPP data.**
+|Residential Tract ID |Residential Tract ID |Residential Tract ID |
+| :-----------| :-----------| :-----------|
+|01001020300 |01001020100 |0.0067|
+|01001020300|01001020200|0.0600|
+|01001020300 |01001020300 |0.0800|
+
+Each of the businesses in the business location shapefile was assigned a 2010 census tract ID by completing a spatial join of the business points to the census tract boundaries. In some cases the business points were not located within a census tract. In general, these errors are caused by geocoding errors that sometimes place addresses slightly outside of tract boundaries in border or coastal areas. Businesses that were not located within a tract boundary were assigned the ID of the closest census tract.
+
+The 2010 synthetic persons table was joined to the pums_p to assign each person an ESR (Employment Status Recode) value. ESR values of 1, 2, 4, and 5 were considered employed. Persons with all other values were not included in the analysis. ESR codes are:
+
+b = N/A (less than 16 years old)
+1 = Civilian employed, at work
+2 = Civilian Employed, with a job but not at work
+3 = Unemployed
+4 = Armed forces, at work
+5 = Armed forces, with a job but not at work
+6 = Not in labor force
+
+A workplace tract was selected for the residential tract of each worker using the workplace probability table and the Python cumulative distribution function “selectworkfips” (Appendix A.1). The function analyzed all possible work tract probabilities for each residential tract. A random floating point number between 0 and 1 was then assigned to each worker within the residential tract.
+
+Once a workplace tract was selected for an individual employee, a list of all workplaces in the tract and their number of worker counts was created. Workplace probabilities were added to this list by dividing the number of workers in each workplace by the total number of workers in the entire tract. Using this list the Python function “assignworkplace” (Appendix A.2) along with a random number generator was used to select a final workplace location. This is achieved by assigning a random floating point number between 0 and 1 to each worker in the residential tract that is assigned to the workplace tract. The function then walked through the list of workplaces and their probabilities, subtracting each probability from the random number until the value reached zero. The workplace associated with the probability that reduced the random number to zero was assigned to the worker.
+
+A two column list resulted from these processing steps showing worker ID and workplace location ID. This list was saved as a comma-separated text file. Each state had its own output file.
+
+Any person who was not assigned a workplace in phase 1 was included in the output table with “NULL” as their workplace location number. Some workers were not assigned due to some tracts being mismatched between the three primary input tables: the workplace probability table (from CTTP), the workplace tracts table (from the census and D&B) and the 2010 persons file from the US Synthetic Population. See below (Data Inconsistencies) for further details.
+
+Approximately 145,000 workers were not assigned a workplace using the methods described in Phase 1. These workers were assigned a workplace within the counties in which they resided during Phase 2. This was achieved by selecting each of the people with “NULL” workplace values in the output table from Phase 1 and then selecting all of the workplaces in that resident’s county. Workers were then assigned to workplaces in their home county by assigning the first worker to the largest employer and then assigning the rest of the workers consecutively to workplaces by size. This process continued until no unassigned workers remained. If the list of workplaces ended before all workers were assigned, the process continued beginning with the largest employer again, until all persons were assigned a workplace.
+
+**Data Inconsistencies**
+There are three distinct cases where data inconsistencies between the commuting pattern data from CTPP and the business data can cause incorrect work assignments. These cases are illustrated in Figure 2:
+
+**TBD placeholder**
+**Figure 2. Illustration of census tract mismatches in data sources.**
+
+Row (1) of Panel A indicates there is a tract of residence (A) in CTTP that has a corresponding workplace tract (D). CTTP data therefore indicates that some people work in census tract D. Panel B, however, shows that the business database does not have any businesses located in census tract D.
+
+Row (2) illustrates a phantom row that would not exist, but it shows the case where the business data contains businesses for census tract G (Panel B), but the CTTP probability table shows no commuters working in census tract G.
+
+Row (3) illustrates a case where a residential tract (H) exists in the CTTP probability table, but there are no workers
+
+# Household Spatial Distributions
+RTI developed a process of placing each synthesized household at appropriate locations across the landscape to ensure that counts of synthetic persons within a census block group matched the aggregated census counts of persons from the adjusted ACS and that the distribution of households and people reflected the best, highest precision population distribution available nationwide.
+
+The Integrated Climate and Land Use Scenarios (ICLUS) 2010 baseline dataset was used as the source for population distribution in the United States. (For more information about ICLUS, please see http://www.epa.gov/ncea/global/iclus/.) Use of the ICLUS population data results in a distribution of households that better reflects the actual distribution of a population than would be possible by simply placing synthesized households randomly within each block group.
+
+The placement method selects all of the synthetic households that are defined for a block group and distributes those households within the ICLUE 90-meter gridded cells so that the total count of synthetic persons matches the population within each 90-meter gridded cell. A post-processing method was then used to distribute the households within the 90-meter gridded cells to which they were assigned.
+
+# Data Quality Measurements
+Each synthesized population dataset is delivered with a set of comparison tables that provide detailed information on the expected counts of households (based on adjusted ACS aggregated data) against the actual synthesized household counts generated by the population synthesizer. These comparison tables enable users to delve into measurements of how well the synthesized population household counts match expectations of the adjusted ACS data for each census block group.
+
+There are five comparison tables: one for each of the synthesized population selection variables ([prefix]_age_compare.txt, [prefix]_size_compare.txt, [prefix]_race_compare.txt, [prefix]_income_compare.txt) and a summary comparison table ([prefix]_summary_compare.txt), which contains an overall measure of accuracy for each variable and the summed accuracy for all variables.
+
+Each of the four variable comparison tables follows the same structure, containing the following fields:
+- stcotrbg: state, county, tract, and block group ID
+- adj_acs_1: count of expected households from the ACS data for category one
+- sp_1: count of households generated by the synthetic population generator for category one
+- diff_1: difference between sp_1 and adj_acs_1
+- w_diff_1: weighted difference between sp_1 and adj_acs_1. The weight is the count of ACS households in the category for the blockgroup divided by the total ACS households in the blockgroup. The weighted difference (w_diff_1) is the weight multiplied by the count of difference between the synthetic population and the adjusted ACS.
+
+For example, the [prefix]_age_compare.txt table would have seven sets of these sp_x,
+adj_acs_x, diff_x, w_diff_x variables—one set for each of the seven age categories (see Appendix A)
+used in the IPF procedure.
+
+The [prefix]_summary_compare.txt table contains an overall accuracy measure for each of
+the four selection variables (age, race, income, and size) and the summed total of all these weighted
+differences for an overall measure of the accuracy of the synthetic population households as compared to
+the ACS data.
+
+To calculate the summary weighted difference for each block group, the following calculation is
+used:
+
+a = sum(i=1:n)*widi*
+
+where a is the weighted difference across all categories for a variable (age, size, race, or income);
+wi is the weight for category i (defined as the count of adjusted ACS households in the category divided
+by the total adjusted ACS households in the blockgroup); di is the absolute value of the difference
+between the adjusted ACS count against the synthetic population count of households for category i. The
+weighted difference for each category is summed up to create the overall weighted difference a for the
+variable. So, for the income, age, and size variables, n = 7 because there are seven categories (see
+Tables 2 to 4), and for the race variable n = 5 because there are five categories (see Table 5).
+
+The overall accuracy measure (across all variables and categories) for each block group is
+calculated by summing the weighted difference value (above) for the four variables as follows:
+- Overall_accuracy = block_group_age_weighted_difference +
+block_group_race_weighted_difference + block_group_income_weighted_difference +
+block_group_income_weighted_difference
+
+# Latitude/Longitude Coordinate System
+If you are loading these data into a GIS, then it is important to specify the appropriate projection
+for the resulting GIS dataset. The coordinate system for these latitude/longitude coordinates is the World
+Geodetic System of 1984.
+
+# Data Relationships
+Each household, school, workplace, and school across the entire database has a unique identifier stored in the sp_id fields. When a table contains sp_id as a foreign key to another table, the foreign key is identified with the text ‘sp_’, the type of object containing the primary key, and the text ‘_id’.
+- synth_households.txt links to original pums_h.txt file via serialno in a many-to-one relationship.
+- synth_people.txt links to synth_households.txt via sp_hh_id->sp_id in a many-to-one relationship.
+- synth_people.txt links to pums_p.txt via serialno and sporder. The serialno identifies a particular household in the PUMS and the sporder identifies each person (as a sequence from 1 to n) in each household. Both serialno and sporder must match when linking synth_people.txt to pums_p.txt.
+- synth_people.txt links to schools.txt via sp_school_id->sp_id in a many-to-one relationship.
+- synth_gq_people.txt links to synth_gq.txt via the sp_gq_id->sp_id in a many-to-one relationship.
+
+# Important Notes
+- Synthetic households and persons derived from PUMS are published by U.S. Census Bureau.
+- A method for constructing the synthetic households and people was developed at the Los Alamos National Laboratory for use with the TranSims transportation simulator software. The original TranSims program code was released under an open source license. (Information about continued development of TranSims is available at http://code.google.com/p/transims/) The TranSims population generator, which is a component of the TranSims transportation simulator software, used four household attributes (i.e., age of the head of household, household income, household size, and race of head of household) to construct the synthetic households and people. When synthetic households are aggregated to a block group, census tract, and county, counts for these four attributes should closely match the totals for those census geographies in the ACS tables.
+- No person-level attributes are used to construct synthetic households or synthetic people; therefore, aggregated counts of synthetic people by age or sex (for example) may not closely match totals contained in ACS.
+
+# References
+Beckman, R.J., K.A. Baggerly, and M.D. McKay. 1996. Creating synthetic baseline populations. Annals of Transportation Research 30(6):415–429.
+
+Wheaton, W.D., J.C. Cajka, B.M. Chasteen, D.K. Wagener, P.C. Cooley, L. Ganapathi, D.J. Roberts, and J.L. Allpress. 2009. Synthesized population databases: A U.S. geospatial database for agent-based models. RTI Press paper available at http://www.rti.org/pubs/mr-0010-0905-wheaton.pdf.
+
+U.S. Environmental Protection Agency (EPA). 2010. ICLUS v1.3 User's Manual: ArcGIS Tools and Datasets for Modeling US Housing Density Growth. Global Change Research Program, National Center for Environmental Assessment, Washington, DC; EPA/600/R-09/143F.
