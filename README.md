@@ -18,6 +18,39 @@ This work was supported by the Models of Infectious Disease Agency Study (MIDAS)
 
 [Overview and Introduction](#overview-and-introduction)
 
+[Downloading and Processing](#downloading-and-processing)
+
+[Data Identification and Metadata](#data-identification-and-metadata)
+
+[Citing the U.S. Synthetic Population Database](#citing-the-us-synthetic-population-database)
+
+[Data Sources](#data-sources)
+
+[Data Files Contained in Each Synthesized Dataset](#data-files-contained-in-each-synthesized-dataset)
+
+[Geographic Contents of Each Synthesized Dataset](#geographic-contents-of-each-synthesized-dataset)
+
+[Generating Synthesized Households](#generating-synthesized-households)
+
+[Group Quarters and Group Quarters Residents](#group-quarters-and-group-quarters-residents)
+
+[School Assignments](#school-assignments)
+
+[Workplace Assignments](#workplace-assignments)
+
+[Household Spatial Distributions](#household-spatial-distributions)
+
+[Data Quality Measurements](#data-quality-measurements)
+
+[Latitude/Longitude Coordinate System](#latitudelongitude-coordinate-system)
+
+[Data Relationships](#data-relationships)
+
+[Important Notes](#important-notes)
+
+[References](#references)
+
+
 # Overview and Introduction
 RTI has developed a nationwide synthetic population of households and persons called the 2010 U.S. Synthesized Population dataset. The synthetic population is a detailed, spatially-explicit representation of the socio-demographic distribution of the U.S. population in a microdata form.
 
