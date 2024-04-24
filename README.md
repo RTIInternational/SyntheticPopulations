@@ -3,8 +3,9 @@ RTI Synthetic Population Data (README)
 
 U.S. Synthetic Population
 2010 Version 1.0
-Quick Start Guide
+Quick Start Guide (README)
 May, 2014 (Original) Apr, 2024 (Updated and converted to README)
+
 Prepared by
 RTI International
 3040 Cornwallis Road
@@ -41,22 +42,28 @@ The metadata file (e.g., 2010_ver1_[fips]_metadata.txt) is an ASCII file that co
 
 # Citing the U.S. Synthetic Population Database
 RTI and its funding agency, the National Institutes of General Medical Sciences (NIGMS) request that you cite the 2010 U.S. Synthetic Population database in any publications or journal articles in which the data were used. The correct citation for the data is:
-Wheaton, W.D. (May, 2014) 2010 U.S. Synthetic Population Ver. 1. RTI International. Retrieved from [https://github.com/RTIInternational/SyntheticPopulations](https://github.com/RTIInternational/SyntheticPopulations)
+
+Wheaton, W.D.. Rineer, J.I.. (May, 2014, Apr, 2024) 2010 U.S. Synthetic Population Ver. 1. RTI International. Retrieved from [https://github.com/RTIInternational/SyntheticPopulations](https://github.com/RTIInternational/SyntheticPopulations)
 
 This Quick Start guide should be cited as:
-Wheaton, W.D. 2014. “U.S. Synthetic Population Database 2010: Quick Start Guide”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/edit/main/README.md)
+Wheaton, W.D. 2014.. Rineer, J.I.. (May, 2014, Apr, 2024) “U.S. Synthetic Population Database 2010: Quick Start Guide (README)”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/edit/main/README.md)
 
 # Data Sources
 The following data sources were used to compile the information in the synthesized population data.
 - 2007–2011 Public Use Microdata Sample: The Public Use Microdata Sample (PUMS) files are generated from responses to the ACS and include most of the variables that are included in the survey. The smallest geographic unit for which the PUMS data are collected is the Public Use Microdata Area (PUMA). These PUMAs are defined for each decennial census and are based on minimum population thresholds of 100,000 people. This research used the 5% sample PUMA data, which reflect 5% of actual household responses used to create the dataset. This method ensures the confidentiality of respondents.
   * Download: The 2007–20011 PUMS data were downloaded from http://www2.census.gov/acs2011_5yr/pums/.
+
 - U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER) Data Block Group Boundaries: The TIGER 2010 version of block group boundaries includes all 50 states and the District of Columbia but not Puerto Rico. Water features (lakes, wide rivers, coastal water, etc.) within the block groups were removed, along with block groups that were entirely on water. Other block groups were either modified or replaced, resulting in nationwide block group data that match the ACS coding.
   * Download: U.S. Census Bureau 2010 Census Redistricting (P.L. 94-171) TIGER/Line Shapefiles were downloaded from the following FTP site: ftp://ftp2.census.gov/geo/pvs/tiger2010st/.
+
 - 2007–20011 American Community Survey (ACS): The ACS data were collected over 60 months, between January 2007 and December 2011. The values represent the average characteristics over the 5-year period.
   * Download: The 2007–2011 5-year summary files were downloaded from http://www2.census.gov/acs2011_5yr/summaryfile/2007-2011_ACSSF_All_In_2_Giant_Files(Experienced-Users-Only)/.
+
 - Integrated Climate and Land Use Scenarios (ICLUS). Baseline gridded population data at 90-meter resolution. This dataset was used to place synthetic households across the landscape.
   * Download: Information on ICLUS and download options available at: http://www.epa.gov/ncea/global/iclus/.
+
 - ESRI Business Analyst: This data source provided some locations for nursing homes, universities, prisons, and military bases.
+
 - 2010 Census SF1: Counts of households by household size by blockgroup and data on age and gender distributions in group quarters was provided by the 2010 Census SF1 files.
 
 # Data Files Contained in Each Synthesized Dataset
@@ -112,6 +119,30 @@ As an example, census block group 370010201002 contains counts of households by 
 |5|19|23|
 |6|5|6|
 |7+|1|1|
-|Total|554|683|
+|**Total**|554|683|
+
+We use the 2010 Decennial Census households by household size counts as the input for the population generator. Since the 2007-2011 ACS estimates 683 households in that census block group we proportionally adjust the counts of households in each bin for household race, householder age, and household income so the final estimates total the 2010 Decennial Census counts of households (554), but maintain the proportion of households in each bin according to the ACS estimates. Tables 2-4 illustrate the adjustment process.
+
+**Table 3. Adjustments to ACS householder race estimates for census block group 370010201002**
+|Bin (race)|ACS Estimate|After Adjustment|Proportion Before|Proportion After|Proportional Difference|
+| :-----------| :-----------| :-----------| :-----------| :-----------| :-----------|
+|White|602|488|88.1|88.1|0|
+|Black|63|51|9.2|9.2|0|
+|Asian|0|0|0|0|0|
+|Other|18|15|2.6|2.7|0.1|
+|2+|Races|0|0|0|0|0|
+|**Total**|683|554| | | |
+
+**Table 4. Adjustments to ACS household income estimates for census block group 370010201002**
+|Bin (race)|ACS Estimate|After Adjustment|Proportion Before|Proportion After|Proportional Difference|
+| :-----------| :-----------| :-----------| :-----------| :-----------| :-----------|
+|<$10K| 8| 6| 1.2| 1.1| -0.1|
+|$10K-$15K|19|15|2.8|2.7|-0.1|
+|$15K-$25K| 60| 49| 8.8| 8.8| 0|
+|$25K-$35K|56|45|8.2|8.1|-0.1|
+|$35K-$50K|114| 92| 16.7| 16.6| -0.1|
+|$50K-$100K|322|261|47.1|47.1|0|
+|>$100K| 104| 84| 15.2| 15.2| 0|
+|**Total**|683|5521|100|99.6| |
 
 
