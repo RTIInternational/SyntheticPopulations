@@ -4,7 +4,7 @@ RTI Synthetic Population Data (README)
 U.S. Synthetic Population
 2010 Version 1.0
 Quick Start Guide
-May, 2014
+May, 2014 (Original) Apr, 2024 (Updated and converted to README)
 Prepared by
 RTI International
 3040 Cornwallis Road
