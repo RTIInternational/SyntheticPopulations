@@ -1,4 +1,4 @@
-# U.S. Synthetic Population Database 2010
+# 2010 U.S. Synthetic Population Ver. 1
 
 U.S. Synthetic Population
 2010 Version 1.0
