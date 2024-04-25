@@ -1,4 +1,4 @@
-# SyntheticPopulations
+# U.S. Synthetic Population Database 2010
 RTI Synthetic Population Data (README)
 
 U.S. Synthetic Population
