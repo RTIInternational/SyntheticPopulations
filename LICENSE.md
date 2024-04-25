@@ -1,4 +1,4 @@
-U.S. Synthetic Population Database 2010 © 2014 by RTI International is licensed under Creative Commons Attribution 4.0 International
+2010 U.S. Synthetic Population Ver. 1 © 2014 by RTI International is licensed under Creative Commons Attribution 4.0 International
 
 ***
 
