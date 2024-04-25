@@ -4,7 +4,7 @@ RTI Synthetic Population Data (README)
 U.S. Synthetic Population
 2010 Version 1.0
 Quick Start Guide (README)
-May, 2014 (Original) Apr, 2024 (Updated and converted to README)
+Apr, 2024
 
 Prepared by
 RTI International
@@ -81,10 +81,10 @@ The metadata file (e.g., 2010_ver1_[fips]_metadata.txt) is an ASCII file that co
 # Citing the U.S. Synthetic Population Database
 RTI and its funding agency, the National Institutes of General Medical Sciences (NIGMS) request that you cite the 2010 U.S. Synthetic Population database in any publications or journal articles in which the data were used. The correct citation for the data is:
 
-Wheaton, W.D.. Rineer, J.I.. (May, 2014, Apr, 2024) 2010 U.S. Synthetic Population Ver. 1. RTI International. Retrieved from [https://github.com/RTIInternational/SyntheticPopulations](https://github.com/RTIInternational/SyntheticPopulations)
+Wheaton, W.D.. (May, 2014) 2010 U.S. Synthetic Population Ver. 1. RTI International. Retrieved from [https://github.com/RTIInternational/SyntheticPopulations](https://github.com/RTIInternational/SyntheticPopulations)
 
 This Quick Start guide should be cited as:
-Wheaton, W.D. 2014.. Rineer, J.I.. (May, 2014, Apr, 2024) “U.S. Synthetic Population Database 2010: Quick Start Guide (README)”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/edit/main/README.md)
+Wheaton, W.D. 2014.. Rineer, J.I.. Allpress, J.. (Apr, 2024) “U.S. Synthetic Population Database 2010: Quick Start Guide (README)”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/edit/main/README.md)
 
 # Data Sources
 The following data sources were used to compile the information in the synthesized population data.
