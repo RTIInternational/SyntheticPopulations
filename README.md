@@ -1,8 +1,5 @@
-# 2010 U.S. Synthetic Population Ver. 1
+# U.S. Synthetic Population Database 2010: Quick Start Guide (README)
 
-U.S. Synthetic Population
-2010 Version 1.0
-Quick Start Guide (README)
 Apr, 2024
 
 Prepared by
