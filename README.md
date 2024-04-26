@@ -7,7 +7,7 @@ RTI International
 3040 Cornwallis Road
 Research Triangle Park, NC 27709
 
-[Orginal PDF]: (https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
+[Orginal PDF]:(/assets/2010_SynthPop_Quick_Start_Guide.pdf)
 
 This work was supported by the Models of Infectious Disease Agency Study (MIDAS) from the National Institute of General Medical Sciences (NIGMS), grant number U24GM087704. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIGMS or the National Institutes of Health.
 
