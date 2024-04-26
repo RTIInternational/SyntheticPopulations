@@ -98,8 +98,6 @@ https://www.youtube.com/watch?v=GgrCm9bIP9E&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0a
 
 https://www.youtube.com/watch?v=Ju2PzknC8W0&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0aW9u
 
-https://www.youtube.com/watch?v=IumUpJDqvU8&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0aW9u
-
 https://www.youtube.com/watch?v=QRvQUpyIfLA&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0aW9u
 
 https://www.youtube.com/watch?v=n75U5fuMngU&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0aW9u
