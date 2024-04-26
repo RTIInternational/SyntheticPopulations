@@ -7,6 +7,8 @@ RTI International
 3040 Cornwallis Road
 Research Triangle Park, NC 27709
 
+[Orginal PDF]: https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf
+
 This work was supported by the Models of Infectious Disease Agency Study (MIDAS) from the National Institute of General Medical Sciences (NIGMS), grant number U24GM087704. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIGMS or the National Institutes of Health.
 
 # Table of Contents
@@ -125,7 +127,7 @@ Synthesized datasets are provided to the user community in subsets defined by ge
 # Geographic Contents of Each Synthesized Dataset
 Because the synthetic population has been exported into state and county study areas, it is important to understand how the boundary issues are handled in each exported dataset. Figure 1 illustrates the spatial contents of each individual state or county dataset.
 
-**TBD placeholder**
+![Figure 1](./assets/Figure1.png "Figure 1")
 **Figure 1. Spatial contents of a synthetic populatoin dataset.**
 
 The result is that each dataset includes all households and persons who reside in the state or county dataset you are downloading. The data set also includes ALL schools or workplaces that those residents are assigned to, whether or not the school/workplace is inside the state or county. No synthetic persons that reside outside the study area are included in the data set nor are they included in the schools/workplace assignments.
@@ -353,7 +355,7 @@ Approximately 145,000 workers were not assigned a workplace using the methods de
 **Data Inconsistencies**
 There are three distinct cases where data inconsistencies between the commuting pattern data from CTPP and the business data can cause incorrect work assignments. These cases are illustrated in Figure 2:
 
-**TBD placeholder**
+![Figure 2](./assets/Figure2.png "Figure 2")
 **Figure 2. Illustration of census tract mismatches in data sources.**
 
 Row (1) of Panel A indicates there is a tract of residence (A) in CTTP that has a corresponding workplace tract (D). CTTP data therefore indicates that some people work in census tract D. Panel B, however, shows that the business database does not have any businesses located in census tract D.
