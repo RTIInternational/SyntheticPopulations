@@ -48,6 +48,17 @@ This work was supported by the Models of Infectious Disease Agency Study (MIDAS)
 
 [References](#references)
 
+[Appendix A: Data Dictionary](#appendix-a-data-dictionary)
+
+[Appendix B: Codes](#appendix-b-codes)
+
+[Appendix C: Metadata File Contents](#appendix-c-metadata-file-contents)
+
+[List of Tables](#list-of-tables)
+
+[List of Figures](#list-of-figures)
+
+
 
 # Overview and Introduction
 RTI has developed a nationwide synthetic population of households and persons called the 2010 U.S. Synthesized Population dataset. The synthetic population is a detailed, spatially-explicit representation of the socio-demographic distribution of the U.S. population in a microdata form.
@@ -436,4 +447,21 @@ Wheaton, W.D., J.C. Cajka, B.M. Chasteen, D.K. Wagener, P.C. Cooley, L. Ganapath
 
 U.S. Environmental Protection Agency (EPA). 2010. ICLUS v1.3 User's Manual: ArcGIS Tools and Datasets for Modeling US Housing Density Growth. Global Change Research Program, National Center for Environmental Assessment, Washington, DC; EPA/600/R-09/143F.
 
+# Appendix A: Data Dictionary
+[See the Original PDF Format](https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
+
+
+# Appendix B: Codes
+[See the Original PDF Format](https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
+
+
+# Appendix C: Metadata File Contents
+[See the Original PDF Format](https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
+
+
+# List of Tables
+[See the Original PDF Format](https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
+
+# List of Figures
+[See the Original PDF Format](https://github.com/RTIInternational/SyntheticPopulations/blob/main/assets/2010_SynthPop_Quick_Start_Guide.pdf)
 
