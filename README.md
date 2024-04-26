@@ -93,7 +93,7 @@ RTI and its funding agency, the National Institutes of General Medical Sciences 
 Wheaton, W.D.. (May, 2014) 2010 U.S. Synthetic Population Ver. 1. RTI International. Retrieved from [https://github.com/RTIInternational/SyntheticPopulations](https://github.com/RTIInternational/SyntheticPopulations)
 
 This Quick Start guide should be cited as:
-Wheaton, W.D. 2014.. Rineer, J.I.. Allpress, J.. (Apr, 2024) “U.S. Synthetic Population Database 2010: Quick Start Guide (README)”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/edit/main/README.md)
+Wheaton, W.D. 2014.. Rineer, J.I.. Allpress, J.. (Apr, 2024) “U.S. Synthetic Population Database 2010: Quick Start Guide (README)”. RTI International. Retrieved from [RTI Synthetic Population Data (README)](https://github.com/RTIInternational/SyntheticPopulations/blob/main/README.md)
 
 # Data Sources
 The following data sources were used to compile the information in the synthesized population data.
