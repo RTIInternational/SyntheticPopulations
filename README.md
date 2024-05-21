@@ -11,6 +11,9 @@ Research Triangle Park, NC 27709
 
 This work was supported by the Models of Infectious Disease Agency Study (MIDAS) from the National Institute of General Medical Sciences (NIGMS), grant number U24GM087704. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIGMS or the National Institutes of Health.
 
+See also
+[Manuscripts, Presentations & Related](https://github.com/RTIInternational/SyntheticPopulations/blob/main/ManuscriptsAndPresentations.md)
+
 # Table of Contents
 **Contents**
 
