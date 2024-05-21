@@ -111,7 +111,7 @@ https://www.youtube.com/watch?v=WKt4hIfR4N8
 https://www.youtube.com/watch?v=xYybOO6593Y&pp=ygUYUlRJIFN5bnRoZXRpYyBQb3B1bGF0aW9u
 
 
-## EPA Related Anlyses
+## EPA Related Analyses
 
 -**OLEM Coal Combustion Residuals final rule (2015)** 
  
